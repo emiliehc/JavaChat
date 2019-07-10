@@ -3,11 +3,12 @@ package udpconversation;
 
 import java.io.*;
 import java.net.*;
+import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
 public class UDPConversation {
 
-    public static void main(String args[]) {
+    public static void main(String args[]) throws NoSuchAlgorithmException {
         try {
             String host = null;
             args = new String[]{"108.61.182.134"};
