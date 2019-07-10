@@ -1,0 +1,29 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package udpconversation;
+
+import java.net.*;
+
+public class MessageReceiver implements Runnable {
+    DatagramSocket sock;
+    byte buf[];
+    MessageReceiver(DatagramSocket s) {
+        sock = s;
+        buf = new byte[1024];
+    }
+    public void run() {
+        while (true) {
+            try {
+                DatagramPacket packet = new DatagramPacket(buf, buf.length);
+                sock.receive(packet);
+                String received = new String(packet.getData(), 0, packet.getLength());
+                System.out.println(received);
+            } catch(Exception e) {
+                System.err.println(e);
+            }
+        }
+    }
+}
