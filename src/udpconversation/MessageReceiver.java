@@ -10,6 +10,7 @@ import java.net.*;
 public class MessageReceiver implements Runnable {
     DatagramSocket sock;
     byte buf[];
+    String receivedMsg = "";
     MessageReceiver(DatagramSocket s) {
         sock = s;
         buf = new byte[1024];
@@ -20,7 +21,8 @@ public class MessageReceiver implements Runnable {
                 DatagramPacket packet = new DatagramPacket(buf, buf.length);
                 sock.receive(packet);
                 String received = new String(packet.getData(), 0, packet.getLength());
-                System.out.println(received);
+                //receivedMsg += received + "\n";
+                UDPConversation.cd.receive(received);
             } catch(Exception e) {
                 System.err.println(e);
             }

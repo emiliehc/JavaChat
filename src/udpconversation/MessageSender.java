@@ -7,7 +7,8 @@ package udpconversation;
 
 import java.io.*;
 import java.net.*;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MessageSender implements Runnable {
 
@@ -37,13 +38,18 @@ public class MessageSender implements Runnable {
 
             }
         } while (!connected);
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        //BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         while (true) {
             try {
+                /*
                 while (!in.ready()) {
                     Thread.sleep(100);
                 }
                 sendMessage(in.readLine());
+                 */
+                sendMessage(UDPConversation.cd.getText());
+            } catch (IOException e) {
+                //System.err.println(e);
             } catch (Exception e) {
                 System.err.println(e);
             }

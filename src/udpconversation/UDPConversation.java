@@ -7,7 +7,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
 public class UDPConversation {
-
+    public static gui.ChatDialog cd = new gui.ChatDialog();
     public static void main(String args[]) throws NoSuchAlgorithmException {
         try {
             String host = null;
@@ -25,6 +25,10 @@ public class UDPConversation {
             Thread sendingThread = new Thread(sender);
             receivingThread.start();
             sendingThread.start();
+            
+            // start gui
+            cd.pack();
+            cd.setVisible(true);
         } catch (Exception e) {
             System.err.println(e);
         }
