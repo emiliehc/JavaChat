@@ -1,10 +1,9 @@
 
 package udpconversation;
 
-import java.io.*;
+
 import java.net.*;
 import java.security.NoSuchAlgorithmException;
-import java.util.*;
 
 public class UDPConversation {
     public static gui.ChatDialog cd = new gui.ChatDialog();
