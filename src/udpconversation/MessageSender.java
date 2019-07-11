@@ -46,7 +46,7 @@ public class MessageSender implements Runnable {
                 }
                 sendMessage(in.readLine());
                  */
-                sendMessage(UDPConversation.cd.getText());
+                sendMessage(UDPConversation.username + "XXXSEPARATORXXX" + UDPConversation.cd.getText());
             } catch (IOException e) {
                 //System.err.println(e);
             } catch (Exception e) {
