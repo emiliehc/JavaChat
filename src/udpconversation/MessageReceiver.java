@@ -8,22 +8,27 @@ package udpconversation;
 import java.net.*;
 
 public class MessageReceiver implements Runnable {
+
     DatagramSocket sock;
     byte buf[];
     String receivedMsg = "";
+
     MessageReceiver(DatagramSocket s) {
         sock = s;
         buf = new byte[1024];
     }
+
     public void run() {
         while (true) {
             try {
                 DatagramPacket packet = new DatagramPacket(buf, buf.length);
                 sock.receive(packet);
                 String received = new String(packet.getData(), 0, packet.getLength());
-                //receivedMsg += received + "\n";
-                UDPConversation.cd.receive(received);
-            } catch(Exception e) {
+                if (!received.equals("RECEIVED")) {
+                    //receivedMsg += received + "\n";
+                    UDPConversation.cd.receive(received);
+                }
+            } catch (Exception e) {
                 System.err.println(e);
             }
         }

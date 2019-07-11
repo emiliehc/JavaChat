@@ -33,8 +33,8 @@ public class ChatDialog extends javax.swing.JFrame {
         txtReceived = new javax.swing.JTextArea();
         txtSend = new javax.swing.JTextField();
         btnSend = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        lblReceiver = new javax.swing.JLabel();
+        txtRecipient = new javax.swing.JTextField();
+        lblRecipient = new javax.swing.JLabel();
         lblReceiver1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -50,7 +50,7 @@ public class ChatDialog extends javax.swing.JFrame {
             }
         });
 
-        lblReceiver.setText("Receiver");
+        lblRecipient.setText("Recipient");
 
         lblReceiver1.setText("Text");
 
@@ -64,8 +64,8 @@ public class ChatDialog extends javax.swing.JFrame {
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblReceiver)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblRecipient)
+                            .addComponent(txtRecipient, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -84,11 +84,11 @@ public class ChatDialog extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblReceiver)
+                    .addComponent(lblRecipient)
                     .addComponent(lblReceiver1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtRecipient)
                     .addComponent(txtSend)
                     .addComponent(btnSend, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -151,6 +151,10 @@ public class ChatDialog extends javax.swing.JFrame {
         }
     }
     
+    public String getRecipient() {
+        return txtRecipient.getText();
+    }
+    
     public void receive(String msg) {
         txtReceived.setText(txtReceived.getText() + "\n" + msg);
     }
@@ -159,10 +163,10 @@ public class ChatDialog extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSend;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JLabel lblReceiver;
     private javax.swing.JLabel lblReceiver1;
+    private javax.swing.JLabel lblRecipient;
     private javax.swing.JTextArea txtReceived;
+    private javax.swing.JTextField txtRecipient;
     private javax.swing.JTextField txtSend;
     // End of variables declaration//GEN-END:variables
 }

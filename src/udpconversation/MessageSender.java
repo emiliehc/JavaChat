@@ -20,7 +20,8 @@ public class MessageSender implements Runnable {
         hostname = h;
     }
 
-    private void sendMessage(String s) throws Exception {
+    public void sendMessage(String s) throws Exception {
+        System.out.println(s);
         byte buf[] = s.getBytes();
         InetAddress address = InetAddress.getByName(hostname);
         DatagramPacket packet = new DatagramPacket(buf, buf.length, address, PORT);
@@ -40,13 +41,7 @@ public class MessageSender implements Runnable {
         //BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         while (true) {
             try {
-                /*
-                while (!in.ready()) {
-                    Thread.sleep(100);
-                }
-                sendMessage(in.readLine());
-                 */
-                sendMessage(UDPConversation.username + "XXXSEPARATORXXX" + UDPConversation.cd.getText());
+                sendMessage(UDPConversation.username + "XXXSEPARATORXXX" + UDPConversation.cd.getText() + "XXXSEPARATORXXX" + UDPConversation.cd.getRecipient());
             } catch (IOException e) {
                 //System.err.println(e);
             } catch (Exception e) {
