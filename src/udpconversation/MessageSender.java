@@ -21,7 +21,7 @@ public class MessageSender implements Runnable {
     }
 
     public void sendMessage(String s) throws Exception {
-        System.out.println(s);
+        //System.out.println(s);
         byte buf[] = s.getBytes();
         InetAddress address = InetAddress.getByName(hostname);
         DatagramPacket packet = new DatagramPacket(buf, buf.length, address, PORT);
