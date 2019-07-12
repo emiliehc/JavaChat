@@ -1,18 +1,19 @@
-
 package udpconversation;
-
 
 import gui.ChatDialog;
 import java.net.*;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 import javax.swing.JOptionPane;
 
 public class UDPConversation {
+
     public static gui.ChatDialog cd;
     public static String username;
     public static MessageSender sender;
     public static MessageReceiver receiver;
     public static String key;
-    
+
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -38,7 +39,14 @@ public class UDPConversation {
         cd = new gui.ChatDialog();
         username = JOptionPane.showInputDialog("Please enter your username.");
         key = JOptionPane.showInputDialog("Please enter the code you want to use for this session.");
+        // hash the key
+        MessageDigest digest;
         try {
+            MessageDigest digestMsg = MessageDigest.getInstance("SHA-256");
+            byte[] encodedhash = digestMsg.digest(
+                    key.getBytes(StandardCharsets.US_ASCII));
+            key = encodedhash.toString();
+
             String host = null;
             args = new String[]{"108.61.182.134"};
             //args = new String[]{"192.168.0.3"};
