@@ -2,8 +2,6 @@ package udpconversation;
 
 import gui.ChatDialog;
 import java.net.*;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
 import javax.swing.JOptionPane;
 
 public class UDPConversation {
@@ -39,14 +37,7 @@ public class UDPConversation {
         cd = new gui.ChatDialog();
         username = JOptionPane.showInputDialog("Please enter your username.");
         key = JOptionPane.showInputDialog("Please enter the code you want to use for this session.");
-        // hash the key
-        MessageDigest digest;
         try {
-            MessageDigest digestMsg = MessageDigest.getInstance("SHA-256");
-            byte[] encodedhash = digestMsg.digest(
-                    key.getBytes(StandardCharsets.US_ASCII));
-            key = encodedhash.toString();
-
             String host = null;
             args = new String[]{"108.61.182.134"};
             //args = new String[]{"192.168.0.3"};
