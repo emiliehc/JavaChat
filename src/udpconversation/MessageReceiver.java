@@ -25,7 +25,10 @@ public class MessageReceiver implements Runnable {
                 DatagramPacket packet = new DatagramPacket(buf, buf.length);
                 sock.receive(packet);
                 String received = new String(packet.getData(), 0, packet.getLength());
-                if (!received.equals("RECEIVED")) {
+                if (received.startsWith("WHOSONLINE")) {
+                    //System.out.println(received);
+                    UDPConversation.cd.receive(received.substring(10, received.length()));
+                } else if (!received.equals("RECEIVED")) {
                     //receivedMsg += received + "\n";
                     String[] separated = received.split(" : ");
                     received = separated[0] + " : " + Encryption.decrypt(separated[1], UDPConversation.key);

@@ -41,7 +41,7 @@ public class UDPConversation {
         try {
             String host = null;
             args = new String[]{"108.61.182.134"};
-            //args = new String[]{"192.168.0.3"};
+            args = new String[]{"192.168.0.3"};
             if (args.length < 1) {
                 System.out.println("Please use the client like this: java ChatClient <server_hostname>");
                 System.exit(1);
