@@ -6,6 +6,7 @@
 package udpconversation;
 
 import java.net.*;
+import java.util.Arrays;
 
 public class MessageReceiver implements Runnable {
 
@@ -26,6 +27,9 @@ public class MessageReceiver implements Runnable {
                 String received = new String(packet.getData(), 0, packet.getLength());
                 if (!received.equals("RECEIVED")) {
                     //receivedMsg += received + "\n";
+                    String[] separated = received.split(" : ");
+                    received = separated[0] + " : " + Encryption.decrypt(separated[1], UDPConversation.key);
+                    //System.out.println(Arrays.toString(separated));
                     UDPConversation.cd.receive(received);
                 }
             } catch (Exception e) {

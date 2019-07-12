@@ -5,34 +5,49 @@
  */
 package udpconversation;
 
-import java.security.NoSuchAlgorithmException;
-import javax.crypto.Cipher;
-import javax.crypto.KeyGenerator;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.ChaCha20ParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
+import java.util.Arrays;
+
 
 public class Encryption {
-    // try aes 256
-    public Encryption() throws NoSuchAlgorithmException {
-        KeyGenerator keyGen = KeyGenerator.getInstance("ChaCha20");
-        keyGen.init(256);
-        SecretKey key = keyGen.generateKey();
-        
-        for (int x : key.getEncoded()) {
-            System.out.println(x + " ");
+    public static String encrypt(String msg, String key) {
+        char[] msgChar = msg.toCharArray();
+        char[] keyChar = key.toCharArray();
+        String output = "";
+        int keyIndex = 0;
+        for (int i = 0; i < msgChar.length; i++) {
+            if (keyIndex >= keyChar.length) {
+                keyIndex = 0;
+            }
+            int msgCharInt = (int)msgChar[i];
+            msgCharInt += (int)keyChar[keyIndex];
+            if (msgCharInt > 127) {
+                msgCharInt -= 127;
+            }
+            //System.out.println(msgCharInt);
+            output += Character.toString((char)msgCharInt);
+            keyIndex++;
         }
+        return output;
     }
-
-    byte[] encrypt(byte[] plainText, SecretKey key) throws Exception {
-        byte[] nonceBytes = new byte[12];
-        int counter = 5;
-        Cipher cipher = Cipher.getInstance("ChaCha20");
-        ChaCha20ParameterSpec paramSpec = new ChaCha20ParameterSpec(nonceBytes, counter);
-        SecretKeySpec keySpec = new SecretKeySpec(key.getEncoded(), "ChaCha20");
-        cipher.init(Cipher.ENCRYPT_MODE, keySpec, paramSpec);
-        byte[] cipherText = cipher.doFinal(plainText);
-
-        return cipherText;
+    
+    public static String decrypt(String msg, String key) {
+        char[] encryptedChar = msg.toCharArray();
+        char[] keyChar = key.toCharArray();
+        int keyIndex = 0;
+        String output = "";
+        for (int i = 0; i < encryptedChar.length; i++) {
+            if (keyIndex >= keyChar.length) {
+                keyIndex = 0;
+            }
+            int msgCharInt = (int)encryptedChar[i];
+            msgCharInt -= (int)keyChar[keyIndex];
+            if (msgCharInt < 0) {
+                msgCharInt += 127;
+            }
+            //System.out.println(msgCharInt);
+            output += Character.toString((char)msgCharInt);
+            keyIndex++;
+        }
+        return output;
     }
 }

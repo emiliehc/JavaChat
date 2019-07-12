@@ -6,6 +6,8 @@
 package gui;
 
 import java.io.IOException;
+import udpconversation.Encryption;
+import udpconversation.UDPConversation;
 
 /**
  *
@@ -81,8 +83,6 @@ public class ChatDialog extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblRecipient)
                     .addComponent(lblReceiver1))
@@ -91,7 +91,9 @@ public class ChatDialog extends javax.swing.JFrame {
                     .addComponent(txtRecipient)
                     .addComponent(txtSend)
                     .addComponent(btnSend, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -99,7 +101,7 @@ public class ChatDialog extends javax.swing.JFrame {
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
         // TODO add your handling code here:
-        bufferedOut = txtSend.getText();
+        bufferedOut = Encryption.encrypt(txtSend.getText(), UDPConversation.key);
         txtSend.setText("");
     }//GEN-LAST:event_btnSendActionPerformed
     
@@ -156,7 +158,7 @@ public class ChatDialog extends javax.swing.JFrame {
     }
     
     public void receive(String msg) {
-        txtReceived.setText(txtReceived.getText() + "\n" + msg);
+        txtReceived.setText(msg + "\n" + txtReceived.getText());
     }
     
     private String bufferedOut = "";

@@ -11,6 +11,7 @@ public class UDPConversation {
     public static String username;
     public static MessageSender sender;
     public static MessageReceiver receiver;
+    public static String key;
     
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -35,11 +36,12 @@ public class UDPConversation {
         }
         //</editor-fold>
         cd = new gui.ChatDialog();
-        username = JOptionPane.showInputDialog("Please enter your username");
+        username = JOptionPane.showInputDialog("Please enter your username.");
+        key = JOptionPane.showInputDialog("Please enter the code you want to use for this session.");
         try {
             String host = null;
             args = new String[]{"108.61.182.134"};
-            args = new String[]{"192.168.0.3"};
+            //args = new String[]{"192.168.0.3"};
             if (args.length < 1) {
                 System.out.println("Please use the client like this: java ChatClient <server_hostname>");
                 System.exit(1);
