@@ -5,7 +5,11 @@ import java.net.*;
 import javax.swing.JOptionPane;
 
 public class UDPConversation {
-
+    // Preferences
+    public static boolean filterUnintelligible = true;
+    
+    
+    // Declarations
     public static gui.ChatDialog cd;
     public static String username;
     public static MessageSender sender;

@@ -32,8 +32,21 @@ public class MessageReceiver implements Runnable {
                     //receivedMsg += received + "\n";
                     String[] separated = received.split(" : ");
                     received = separated[0] + " : " + Encryption.decrypt(separated[1], UDPConversation.key);
-                    //System.out.println(Arrays.toString(separated));
-                    UDPConversation.cd.receive(received);
+                    
+                    boolean unintelligible = false;
+                    if (UDPConversation.filterUnintelligible) {
+                        // test if the message is on the same channel
+                        char[] receivedChar = received.toCharArray();
+                        for (char c : receivedChar) {
+                            if ((int) c <= 8 || ((int) c >= 14 && (int) c <= 31)) {
+                                unintelligible = true;
+                            }
+                        }
+                    }
+
+                    if (!unintelligible) {
+                        UDPConversation.cd.receive(received);
+                    }
                 }
             } catch (Exception e) {
                 System.err.println(e);

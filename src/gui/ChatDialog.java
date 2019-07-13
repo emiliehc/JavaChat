@@ -6,8 +6,6 @@
 package gui;
 
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import udpconversation.Encryption;
 import udpconversation.UDPConversation;
 
@@ -41,6 +39,11 @@ public class ChatDialog extends javax.swing.JFrame {
         lblRecipient = new javax.swing.JLabel();
         lblReceiver1 = new javax.swing.JLabel();
         btnWhosOnline = new javax.swing.JButton();
+        menuBar = new javax.swing.JMenuBar();
+        menuFile = new javax.swing.JMenu();
+        menuFileExit = new javax.swing.JMenuItem();
+        menuOptions = new javax.swing.JMenu();
+        menuFilter = new javax.swing.JCheckBoxMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,6 +68,33 @@ public class ChatDialog extends javax.swing.JFrame {
                 btnWhosOnlineActionPerformed(evt);
             }
         });
+
+        menuFile.setText("File");
+
+        menuFileExit.setText("Exit");
+        menuFileExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuFileExitActionPerformed(evt);
+            }
+        });
+        menuFile.add(menuFileExit);
+
+        menuBar.add(menuFile);
+
+        menuOptions.setText("Options");
+
+        menuFilter.setSelected(true);
+        menuFilter.setText("Filter out text from other channels");
+        menuFilter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuFilterActionPerformed(evt);
+            }
+        });
+        menuOptions.add(menuFilter);
+
+        menuBar.add(menuOptions);
+
+        setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -105,7 +135,7 @@ public class ChatDialog extends javax.swing.JFrame {
                         .addComponent(txtRecipient, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnSend, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -126,6 +156,16 @@ public class ChatDialog extends javax.swing.JFrame {
             System.err.println(ex);
         }
     }//GEN-LAST:event_btnWhosOnlineActionPerformed
+
+    private void menuFileExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileExitActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_menuFileExitActionPerformed
+
+    private void menuFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFilterActionPerformed
+        // TODO add your handling code here:
+        UDPConversation.filterUnintelligible = !UDPConversation.filterUnintelligible;
+    }//GEN-LAST:event_menuFilterActionPerformed
     
     /**
      * @param args the command line arguments
@@ -190,6 +230,11 @@ public class ChatDialog extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblReceiver1;
     private javax.swing.JLabel lblRecipient;
+    private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenu menuFile;
+    private javax.swing.JMenuItem menuFileExit;
+    private javax.swing.JCheckBoxMenuItem menuFilter;
+    private javax.swing.JMenu menuOptions;
     private javax.swing.JTextArea txtReceived;
     private javax.swing.JTextField txtRecipient;
     private javax.swing.JTextField txtSend;
