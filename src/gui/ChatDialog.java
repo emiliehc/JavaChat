@@ -56,6 +56,12 @@ public class ChatDialog extends javax.swing.JFrame {
         txtReceived.setRows(5);
         jScrollPane1.setViewportView(txtReceived);
 
+        txtSend.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSendActionPerformed(evt);
+            }
+        });
+
         btnSend.setText("Send");
         btnSend.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,6 +209,10 @@ public class ChatDialog extends javax.swing.JFrame {
         // TODO add your handling code here:
         UDPConversation.legacyEncryption = !UDPConversation.legacyEncryption;
     }//GEN-LAST:event_menuLegacyEncryptionActionPerformed
+
+    private void txtSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSendActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSendActionPerformed
     
     /**
      * @param args the command line arguments
