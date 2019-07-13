@@ -5,11 +5,12 @@ import java.net.*;
 import javax.swing.JOptionPane;
 
 public class UDPConversation {
+
     // Preferences
     public static boolean filterUnintelligible = true;
     public static boolean legacyEncryption = false;
-    
-    
+    public static String host = null;
+
     // Declarations
     public static gui.ChatDialog cd;
     public static String username;
@@ -42,18 +43,14 @@ public class UDPConversation {
         }
         //</editor-fold>
         cd = new gui.ChatDialog();
+        host = JOptionPane.showInputDialog(null, "Please enter the server IP address", "108.61.182.134");
         username = JOptionPane.showInputDialog("Please enter your username.");
         key = JOptionPane.showInputDialog("Please enter the code you want to use for this session.");
         try {
-            String host = null;
-            args = new String[]{"108.61.182.134"};
-            //args = new String[]{"192.168.0.3"};
-            if (args.length < 1) {
-                System.out.println("Please use the client like this: java ChatClient <server_hostname>");
-                System.exit(1);
-            } else {
-                host = args[0]; // the host variable now holds the ip address of the server
-            }
+            //String host = null;
+            if (args.length >= 1) {
+                host = args[0];
+            } 
             DatagramSocket socket = new DatagramSocket();
             receiver = new MessageReceiver(socket);
             sender = new MessageSender(socket, host);
