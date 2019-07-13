@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 public class UDPConversation {
     // Preferences
     public static boolean filterUnintelligible = true;
+    public static boolean legacyEncryption = false;
     
     
     // Declarations

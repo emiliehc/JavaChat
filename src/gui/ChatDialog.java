@@ -44,6 +44,7 @@ public class ChatDialog extends javax.swing.JFrame {
         menuFileExit = new javax.swing.JMenuItem();
         menuOptions = new javax.swing.JMenu();
         menuFilter = new javax.swing.JCheckBoxMenuItem();
+        menuLegacyEncryption = new javax.swing.JCheckBoxMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,6 +92,14 @@ public class ChatDialog extends javax.swing.JFrame {
             }
         });
         menuOptions.add(menuFilter);
+
+        menuLegacyEncryption.setText("Use legacy encryption (compatibility mode)");
+        menuLegacyEncryption.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuLegacyEncryptionActionPerformed(evt);
+            }
+        });
+        menuOptions.add(menuLegacyEncryption);
 
         menuBar.add(menuOptions);
 
@@ -166,6 +175,11 @@ public class ChatDialog extends javax.swing.JFrame {
         // TODO add your handling code here:
         UDPConversation.filterUnintelligible = !UDPConversation.filterUnintelligible;
     }//GEN-LAST:event_menuFilterActionPerformed
+
+    private void menuLegacyEncryptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLegacyEncryptionActionPerformed
+        // TODO add your handling code here:
+        UDPConversation.legacyEncryption = !UDPConversation.legacyEncryption;
+    }//GEN-LAST:event_menuLegacyEncryptionActionPerformed
     
     /**
      * @param args the command line arguments
@@ -234,6 +248,7 @@ public class ChatDialog extends javax.swing.JFrame {
     private javax.swing.JMenu menuFile;
     private javax.swing.JMenuItem menuFileExit;
     private javax.swing.JCheckBoxMenuItem menuFilter;
+    private javax.swing.JCheckBoxMenuItem menuLegacyEncryption;
     private javax.swing.JMenu menuOptions;
     private javax.swing.JTextArea txtReceived;
     private javax.swing.JTextField txtRecipient;
