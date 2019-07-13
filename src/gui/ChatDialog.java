@@ -38,17 +38,19 @@ public class ChatDialog extends javax.swing.JFrame {
         txtRecipient = new javax.swing.JTextField();
         lblRecipient = new javax.swing.JLabel();
         lblReceiver1 = new javax.swing.JLabel();
-        btnWhosOnline = new javax.swing.JButton();
         pnlStatusBar = new javax.swing.JPanel();
         lblStatus = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
+        menuWhosOnline = new javax.swing.JMenuItem();
         menuFileExit = new javax.swing.JMenuItem();
         menuOptions = new javax.swing.JMenu();
         menuFilter = new javax.swing.JCheckBoxMenuItem();
         menuLegacyEncryption = new javax.swing.JCheckBoxMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Java Chat");
+        setName("main"); // NOI18N
 
         txtReceived.setColumns(20);
         txtReceived.setRows(5);
@@ -65,14 +67,7 @@ public class ChatDialog extends javax.swing.JFrame {
 
         lblReceiver1.setText("Text");
 
-        btnWhosOnline.setText("Who's Online");
-        btnWhosOnline.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnWhosOnlineActionPerformed(evt);
-            }
-        });
-
-        pnlStatusBar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        pnlStatusBar.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
         lblStatus.setText("Connecting");
 
@@ -90,7 +85,15 @@ public class ChatDialog extends javax.swing.JFrame {
             .addComponent(lblStatus, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
         );
 
-        menuFile.setText("File");
+        menuFile.setText("Program");
+
+        menuWhosOnline.setText("Show Who's Online");
+        menuWhosOnline.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnWhosOnlineActionPerformed(evt);
+            }
+        });
+        menuFile.add(menuWhosOnline);
 
         menuFileExit.setText("Exit");
         menuFileExit.addActionListener(new java.awt.event.ActionListener() {
@@ -132,21 +135,20 @@ public class ChatDialog extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnWhosOnline, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtRecipient, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblRecipient))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtSend)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnSend))
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblReceiver1)
-                                .addGap(0, 436, Short.MAX_VALUE))
-                            .addComponent(txtSend))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSend)))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
             .addComponent(pnlStatusBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -161,7 +163,6 @@ public class ChatDialog extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtSend, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnWhosOnline, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtRecipient, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnSend, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
@@ -262,7 +263,6 @@ public class ChatDialog extends javax.swing.JFrame {
     private String bufferedOut = "";
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSend;
-    private javax.swing.JButton btnWhosOnline;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblReceiver1;
     private javax.swing.JLabel lblRecipient;
@@ -273,6 +273,7 @@ public class ChatDialog extends javax.swing.JFrame {
     private javax.swing.JCheckBoxMenuItem menuFilter;
     private javax.swing.JCheckBoxMenuItem menuLegacyEncryption;
     private javax.swing.JMenu menuOptions;
+    private javax.swing.JMenuItem menuWhosOnline;
     private javax.swing.JPanel pnlStatusBar;
     private javax.swing.JTextArea txtReceived;
     private javax.swing.JTextField txtRecipient;
