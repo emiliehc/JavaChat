@@ -28,11 +28,15 @@ public class MessageReceiver implements Runnable {
                 if (received.startsWith("WHOSONLINE")) {
                     //System.out.println(received);
                     UDPConversation.cd.receive(received.substring(10, received.length()));
-                } else if (!received.equals("RECEIVED")) {
+                } else if (received.equals("RECEIVED")) {
+                    UDPConversation.time = java.lang.System.currentTimeMillis();
+                    UDPConversation.connected = true;
+                    UDPConversation.cd.lblStatus.setText("Connected");
+                } else {
                     //receivedMsg += received + "\n";
                     String[] separated = received.split(" : ");
                     received = separated[0] + " : " + Encryption.decrypt(separated[1], UDPConversation.key);
-                    
+
                     boolean unintelligible = false;
                     if (UDPConversation.filterUnintelligible) {
                         // test if the message is on the same channel

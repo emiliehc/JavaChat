@@ -39,6 +39,8 @@ public class ChatDialog extends javax.swing.JFrame {
         lblRecipient = new javax.swing.JLabel();
         lblReceiver1 = new javax.swing.JLabel();
         btnWhosOnline = new javax.swing.JButton();
+        pnlStatusBar = new javax.swing.JPanel();
+        lblStatus = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
         menuFileExit = new javax.swing.JMenuItem();
@@ -69,6 +71,24 @@ public class ChatDialog extends javax.swing.JFrame {
                 btnWhosOnlineActionPerformed(evt);
             }
         });
+
+        pnlStatusBar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        lblStatus.setText("Connecting");
+
+        javax.swing.GroupLayout pnlStatusBarLayout = new javax.swing.GroupLayout(pnlStatusBar);
+        pnlStatusBar.setLayout(pnlStatusBarLayout);
+        pnlStatusBarLayout.setHorizontalGroup(
+            pnlStatusBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlStatusBarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pnlStatusBarLayout.setVerticalGroup(
+            pnlStatusBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblStatus, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+        );
 
         menuFile.setText("File");
 
@@ -128,6 +148,7 @@ public class ChatDialog extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnSend)))
                 .addContainerGap())
+            .addComponent(pnlStatusBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,8 +165,9 @@ public class ChatDialog extends javax.swing.JFrame {
                         .addComponent(txtRecipient, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnSend, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlStatusBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -244,12 +266,14 @@ public class ChatDialog extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblReceiver1;
     private javax.swing.JLabel lblRecipient;
+    public javax.swing.JLabel lblStatus;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu menuFile;
     private javax.swing.JMenuItem menuFileExit;
     private javax.swing.JCheckBoxMenuItem menuFilter;
     private javax.swing.JCheckBoxMenuItem menuLegacyEncryption;
     private javax.swing.JMenu menuOptions;
+    private javax.swing.JPanel pnlStatusBar;
     private javax.swing.JTextArea txtReceived;
     private javax.swing.JTextField txtRecipient;
     private javax.swing.JTextField txtSend;

@@ -16,6 +16,8 @@ public class UDPConversation {
     public static MessageSender sender;
     public static MessageReceiver receiver;
     public static String key;
+    public static long time = 0;
+    public static boolean connected = false;
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

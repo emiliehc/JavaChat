@@ -20,6 +20,11 @@ public class Connection implements Runnable {
         while (true) {
             try {
                 UDPConversation.sender.sendMessage("USERCONNECTION:" + UDPConversation.username);
+                //System.out.println((java.lang.System.currentTimeMillis() - UDPConversation.time) / 1000.0);
+                if (java.lang.System.currentTimeMillis() - UDPConversation.time > 3000) {
+                    UDPConversation.connected = false;
+                    UDPConversation.cd.lblStatus.setText("Connecting");
+                } 
                 Thread.sleep(1000);
             } catch (Exception ex) {
                 
