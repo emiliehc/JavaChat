@@ -11,7 +11,7 @@ public class UDPConversation {
     public static boolean filterUnintelligible = true;
     public static boolean legacyEncryption = false;
     public static String host = null;
-    public static ResourceBundle bundle = ResourceBundle.getBundle("Resources\\en-US");
+    public static ResourceBundle bundle = ResourceBundle.getBundle("Resources.en-US");
 
     // Declarations
     public static gui.ChatDialog cd;
@@ -73,7 +73,7 @@ public class UDPConversation {
     
     public static void Relaunch(String localeName) {
         cd.dispose();
-        bundle = ResourceBundle.getBundle("Resources\\" + localeName);
+        bundle = ResourceBundle.getBundle("Resources." + localeName);
         cd = new ChatDialog();
         cd.pack();
         cd.setVisible(true);
