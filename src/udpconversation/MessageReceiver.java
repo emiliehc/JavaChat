@@ -6,7 +6,6 @@
 package udpconversation;
 
 import java.net.*;
-import java.util.Arrays;
 
 public class MessageReceiver implements Runnable {
 

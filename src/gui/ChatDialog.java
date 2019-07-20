@@ -6,7 +6,6 @@
 package gui;
 
 import java.io.IOException;
-import javax.swing.JOptionPane;
 import udpconversation.Encryption;
 import udpconversation.UDPConversation;
 
