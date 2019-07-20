@@ -3,6 +3,7 @@ package udpconversation;
 import gui.ChatDialog;
 import java.net.*;
 import javax.swing.JOptionPane;
+import java.util.ResourceBundle;
 
 public class UDPConversation {
 
@@ -10,6 +11,7 @@ public class UDPConversation {
     public static boolean filterUnintelligible = true;
     public static boolean legacyEncryption = false;
     public static String host = null;
+    public static ResourceBundle bundle = ResourceBundle.getBundle("Resources\\en-US");
 
     // Declarations
     public static gui.ChatDialog cd;
@@ -67,5 +69,13 @@ public class UDPConversation {
         } catch (Exception e) {
             System.err.println(e);
         }
+    }
+    
+    public static void Relaunch(String localeName) {
+        cd.dispose();
+        bundle = ResourceBundle.getBundle("Resources\\" + localeName);
+        cd = new ChatDialog();
+        cd.pack();
+        cd.setVisible(true);
     }
 }

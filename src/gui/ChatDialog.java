@@ -48,9 +48,12 @@ public class ChatDialog extends javax.swing.JFrame {
         menuOptions = new javax.swing.JMenu();
         menuFilter = new javax.swing.JCheckBoxMenuItem();
         menuLegacyEncryption = new javax.swing.JCheckBoxMenuItem();
+        menuLanguages = new javax.swing.JMenu();
+        btnEnglish = new javax.swing.JMenuItem();
+        btnChinese = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Java Chat");
+        setTitle(UDPConversation.bundle.getString("JAVA_CHAT"));
         setName("main"); // NOI18N
 
         txtReceived.setColumns(20);
@@ -63,20 +66,20 @@ public class ChatDialog extends javax.swing.JFrame {
             }
         });
 
-        btnSend.setText("Send");
+        btnSend.setText(UDPConversation.bundle.getString("SEND"));
         btnSend.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSendActionPerformed(evt);
             }
         });
 
-        lblRecipient.setText("Recipient");
+        lblRecipient.setText(UDPConversation.bundle.getString("RECIPIENT"));
 
-        lblReceiver1.setText("Text");
+        lblReceiver1.setText(UDPConversation.bundle.getString("TEXT"));
 
         pnlStatusBar.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
-        lblStatus.setText("Connecting");
+        lblStatus.setText(UDPConversation.bundle.getString("CONNECTING"));
 
         javax.swing.GroupLayout pnlStatusBarLayout = new javax.swing.GroupLayout(pnlStatusBar);
         pnlStatusBar.setLayout(pnlStatusBarLayout);
@@ -92,9 +95,9 @@ public class ChatDialog extends javax.swing.JFrame {
             .addComponent(lblStatus, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
         );
 
-        menuFile.setText("Program");
+        menuFile.setText(UDPConversation.bundle.getString("PROGRAM"));
 
-        menuWhosOnline.setText("Show Who's Online");
+        menuWhosOnline.setText(UDPConversation.bundle.getString("SHOW_WHOS_ONLINE"));
         menuWhosOnline.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnWhosOnlineActionPerformed(evt);
@@ -102,7 +105,7 @@ public class ChatDialog extends javax.swing.JFrame {
         });
         menuFile.add(menuWhosOnline);
 
-        menuFileExit.setText("Exit");
+        menuFileExit.setText(UDPConversation.bundle.getString("EXIT"));
         menuFileExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuFileExitActionPerformed(evt);
@@ -112,10 +115,10 @@ public class ChatDialog extends javax.swing.JFrame {
 
         menuBar.add(menuFile);
 
-        menuOptions.setText("Options");
+        menuOptions.setText(UDPConversation.bundle.getString("OPTIONS"));
 
         menuFilter.setSelected(true);
-        menuFilter.setText("Filter out text from other channels");
+        menuFilter.setText(UDPConversation.bundle.getString("TEXT_FILTER"));
         menuFilter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuFilterActionPerformed(evt);
@@ -123,13 +126,33 @@ public class ChatDialog extends javax.swing.JFrame {
         });
         menuOptions.add(menuFilter);
 
-        menuLegacyEncryption.setText("Use legacy encryption (compatibility mode)");
+        menuLegacyEncryption.setText(UDPConversation.bundle.getString("LEGACY_ENCRYPTION"));
         menuLegacyEncryption.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuLegacyEncryptionActionPerformed(evt);
             }
         });
         menuOptions.add(menuLegacyEncryption);
+
+        menuLanguages.setText(UDPConversation.bundle.getString("LANGUAGES"));
+
+        btnEnglish.setText("English");
+        btnEnglish.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnglishActionPerformed(evt);
+            }
+        });
+        menuLanguages.add(btnEnglish);
+
+        btnChinese.setText("中文 (简体)");
+        btnChinese.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChineseActionPerformed(evt);
+            }
+        });
+        menuLanguages.add(btnChinese);
+
+        menuOptions.add(menuLanguages);
 
         menuBar.add(menuOptions);
 
@@ -214,6 +237,16 @@ public class ChatDialog extends javax.swing.JFrame {
     private void txtSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSendActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSendActionPerformed
+
+    private void btnEnglishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnglishActionPerformed
+        // TODO add your handling code here:
+        UDPConversation.Relaunch("en-US");
+    }//GEN-LAST:event_btnEnglishActionPerformed
+
+    private void btnChineseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChineseActionPerformed
+        // TODO add your handling code here:
+        UDPConversation.Relaunch("zh-CN");
+    }//GEN-LAST:event_btnChineseActionPerformed
     
     /**
      * @param args the command line arguments
@@ -273,6 +306,8 @@ public class ChatDialog extends javax.swing.JFrame {
     
     private String bufferedOut = "";
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem btnChinese;
+    private javax.swing.JMenuItem btnEnglish;
     private javax.swing.JButton btnSend;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblReceiver1;
@@ -282,6 +317,7 @@ public class ChatDialog extends javax.swing.JFrame {
     private javax.swing.JMenu menuFile;
     private javax.swing.JMenuItem menuFileExit;
     private javax.swing.JCheckBoxMenuItem menuFilter;
+    private javax.swing.JMenu menuLanguages;
     private javax.swing.JCheckBoxMenuItem menuLegacyEncryption;
     private javax.swing.JMenu menuOptions;
     private javax.swing.JMenuItem menuWhosOnline;

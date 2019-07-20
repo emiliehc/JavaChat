@@ -31,7 +31,7 @@ public class MessageReceiver implements Runnable {
                 } else if (received.equals("RECEIVED")) {
                     UDPConversation.time = java.lang.System.currentTimeMillis();
                     UDPConversation.connected = true;
-                    UDPConversation.cd.lblStatus.setText("Connected");
+                    UDPConversation.cd.lblStatus.setText(UDPConversation.bundle.getString("CONNECTED"));
                 } else {
                     //receivedMsg += received + "\n";
                     String[] separated = received.split(" : ");
