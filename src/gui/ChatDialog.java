@@ -5,7 +5,13 @@
  */
 package gui;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import udpconversation.Encryption;
 import udpconversation.UDPConversation;
 
@@ -239,14 +245,24 @@ public class ChatDialog extends javax.swing.JFrame {
 
     private void btnEnglishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnglishActionPerformed
         // TODO add your handling code here:
+        try (FileWriter fw = new FileWriter(new File("preferences.pref"))) {
+            fw.write("en-US");
+        } catch (IOException e) {
+            System.err.println(e);
+        }
         UDPConversation.Relaunch("en-US");
     }//GEN-LAST:event_btnEnglishActionPerformed
 
     private void btnChineseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChineseActionPerformed
         // TODO add your handling code here:
+        try (FileWriter fw = new FileWriter(new File("preferences.pref"))) {
+            fw.write("zh-CN");
+        } catch (IOException e) {
+            System.err.println(e);
+        }
         UDPConversation.Relaunch("zh-CN");
     }//GEN-LAST:event_btnChineseActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */
@@ -281,9 +297,8 @@ public class ChatDialog extends javax.swing.JFrame {
             }
         });
 
-        
     }
-    
+
     public String getText() throws IOException {
         if (bufferedOut.equals("")) {
             // there is nothing to send
@@ -294,15 +309,15 @@ public class ChatDialog extends javax.swing.JFrame {
             return out;
         }
     }
-    
+
     public String getRecipient() {
         return txtRecipient.getText();
     }
-    
+
     public void receive(String msg) {
         txtReceived.setText(msg + "\n" + txtReceived.getText());
     }
-    
+
     private String bufferedOut = "";
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem btnChinese;
