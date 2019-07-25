@@ -47,6 +47,7 @@ public class ChatDialog extends javax.swing.JFrame {
         menuLegacyEncryption = new javax.swing.JCheckBoxMenuItem();
         menuLanguages = new javax.swing.JMenu();
         btnEnglish = new javax.swing.JMenuItem();
+        btnChinesePinyin = new javax.swing.JMenuItem();
         btnChinese = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -148,6 +149,14 @@ public class ChatDialog extends javax.swing.JFrame {
             }
         });
         menuLanguages.add(btnEnglish);
+
+        btnChinesePinyin.setText("Hànyǔ Pīnyīn");
+        btnChinesePinyin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChinesePinyinActionPerformed(evt);
+            }
+        });
+        menuLanguages.add(btnChinesePinyin);
 
         btnChinese.setText("中文 (简体)");
         btnChinese.addActionListener(new java.awt.event.ActionListener() {
@@ -270,6 +279,16 @@ public class ChatDialog extends javax.swing.JFrame {
         about.setVisible(true);
     }//GEN-LAST:event_btnAbouttActionPerformed
 
+    private void btnChinesePinyinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChinesePinyinActionPerformed
+        // TODO add your handling code here:
+        try (FileWriter fw = new FileWriter(new File("preferences.pref"))) {
+            fw.write("zh-PY");
+        } catch (IOException e) {
+            System.err.println(e);
+        }
+        UDPConversation.Relaunch("zh-PY");
+    }//GEN-LAST:event_btnChinesePinyinActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -329,6 +348,7 @@ public class ChatDialog extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem btnAboutt;
     private javax.swing.JMenuItem btnChinese;
+    private javax.swing.JMenuItem btnChinesePinyin;
     private javax.swing.JMenuItem btnEnglish;
     private javax.swing.JButton btnSend;
     private javax.swing.JScrollPane jScrollPane1;

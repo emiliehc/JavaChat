@@ -86,6 +86,14 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEnglishActionPerformed"/>
                   </Events>
                 </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="btnChinesePinyin">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="H&#xe0;ny&#x1d4; P&#x12b;ny&#x12b;n"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnChinesePinyinActionPerformed"/>
+                  </Events>
+                </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="btnChinese">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x4e2d;&#x6587; (&#x7b80;&#x4f53;)"/>
