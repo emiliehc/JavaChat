@@ -42,6 +42,7 @@ public class ChatDialog extends javax.swing.JFrame {
         menuWhosOnline = new javax.swing.JMenuItem();
         menuFileExit = new javax.swing.JMenuItem();
         menuOptions = new javax.swing.JMenu();
+        btnAboutt = new javax.swing.JMenuItem();
         menuFilter = new javax.swing.JCheckBoxMenuItem();
         menuLegacyEncryption = new javax.swing.JCheckBoxMenuItem();
         menuLanguages = new javax.swing.JMenu();
@@ -112,6 +113,14 @@ public class ChatDialog extends javax.swing.JFrame {
         menuBar.add(menuFile);
 
         menuOptions.setText(UDPConversation.bundle.getString("OPTIONS"));
+
+        btnAboutt.setText(UDPConversation.bundle.getString("ABOUT"));
+        btnAboutt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAbouttActionPerformed(evt);
+            }
+        });
+        menuOptions.add(btnAboutt);
 
         menuFilter.setSelected(true);
         menuFilter.setText(UDPConversation.bundle.getString("TEXT_FILTER"));
@@ -254,6 +263,13 @@ public class ChatDialog extends javax.swing.JFrame {
         UDPConversation.Relaunch("zh-CN");
     }//GEN-LAST:event_btnChineseActionPerformed
 
+    private void btnAbouttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbouttActionPerformed
+        // TODO add your handling code here:
+        About about = new About();
+        about.pack();
+        about.setVisible(true);
+    }//GEN-LAST:event_btnAbouttActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -311,6 +327,7 @@ public class ChatDialog extends javax.swing.JFrame {
 
     private String bufferedOut = "";
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem btnAboutt;
     private javax.swing.JMenuItem btnChinese;
     private javax.swing.JMenuItem btnEnglish;
     private javax.swing.JButton btnSend;

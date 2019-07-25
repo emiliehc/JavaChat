@@ -49,7 +49,8 @@ public class UDPConversation {
             java.util.logging.Logger.getLogger(ChatDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
+        
         // read preference file
         // create one if it does not exist
         File preferences = new File("preferences.pref");
@@ -107,5 +108,9 @@ public class UDPConversation {
         cd = new ChatDialog();
         cd.pack();
         cd.setVisible(true);
+    }
+    
+    public static String getVersion() {
+        return "2.0.1";
     }
 }
