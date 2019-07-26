@@ -1,6 +1,7 @@
 package udpconversation;
 
 import gui.ChatDialog;
+import gui.Welcome;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -79,6 +80,9 @@ public class UDPConversation {
         host = JOptionPane.showInputDialog(null, bundle.getString("ENTER_IP"), "108.61.182.134");
         username = JOptionPane.showInputDialog(bundle.getString("ENTER_NAME"));
         key = JOptionPane.showInputDialog(bundle.getString("ENTER_CODE"));
+        Welcome w = new Welcome();
+        w.pack();
+        w.setVisible(true);
         try {
             //String host = null;
             if (args.length >= 1) {
@@ -94,7 +98,12 @@ public class UDPConversation {
             receivingThread.start();
             sendingThread.start();
             connectionThread.start();
-            // start gui
+            
+            while (!connected) {
+                Thread.sleep(50);
+            }
+            w.dispose();
+            // start the gui once the server has been connected
             cd.pack();
             cd.setVisible(true);
         } catch (Exception e) {
@@ -111,6 +120,6 @@ public class UDPConversation {
     }
     
     public static String getVersion() {
-        return "2.0.1";
+        return "2.0.2";
     }
 }
