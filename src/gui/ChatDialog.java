@@ -52,6 +52,7 @@ public class ChatDialog extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle(UDPConversation.bundle.getString("JAVA_CHAT"));
+        setMinimumSize(new java.awt.Dimension(400, 300));
         setName("main"); // NOI18N
 
         txtReceived.setColumns(20);
