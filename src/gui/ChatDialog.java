@@ -47,6 +47,7 @@ public class ChatDialog extends javax.swing.JFrame {
         menuLegacyEncryption = new javax.swing.JCheckBoxMenuItem();
         menuLanguages = new javax.swing.JMenu();
         btnEnglish = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         btnChinesePinyin = new javax.swing.JMenuItem();
         btnChinese = new javax.swing.JMenuItem();
 
@@ -150,6 +151,14 @@ public class ChatDialog extends javax.swing.JFrame {
             }
         });
         menuLanguages.add(btnEnglish);
+
+        jMenuItem1.setText("Deutsch");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        menuLanguages.add(jMenuItem1);
 
         btnChinesePinyin.setText("Hànyǔ Pīnyīn");
         btnChinesePinyin.addActionListener(new java.awt.event.ActionListener() {
@@ -290,6 +299,16 @@ public class ChatDialog extends javax.swing.JFrame {
         UDPConversation.Relaunch("zh-PY");
     }//GEN-LAST:event_btnChinesePinyinActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        try (FileWriter fw = new FileWriter(new File("preferences.pref"))) {
+            fw.write("de-DE");
+        } catch (IOException e) {
+            System.err.println(e);
+        }
+        UDPConversation.Relaunch("de-DE");
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     public String getText() throws IOException {
         if (bufferedOut.equals("")) {
             // there is nothing to send
@@ -316,6 +335,7 @@ public class ChatDialog extends javax.swing.JFrame {
     private javax.swing.JMenuItem btnChinesePinyin;
     private javax.swing.JMenuItem btnEnglish;
     private javax.swing.JButton btnSend;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblReceiver1;
     private javax.swing.JLabel lblRecipient;
