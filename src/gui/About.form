@@ -4,7 +4,7 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
     <Property name="title" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-      <Connection code="udpconversation.UDPConversation.bundle.getString(&quot;ABOUT&quot;)" type="code"/>
+      <Connection code="conversation.Conversation.bundle.getString(&quot;ABOUT&quot;)" type="code"/>
     </Property>
     <Property name="resizable" type="boolean" value="false"/>
     <Property name="type" type="java.awt.Window$Type" editor="org.netbeans.modules.form.editors.EnumEditor">
@@ -56,14 +56,14 @@
     <Component class="javax.swing.JLabel" name="lbl1">
       <Properties>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="udpconversation.UDPConversation.bundle.getString(&quot;ABOUT_TEXT&quot;)" type="code"/>
+          <Connection code="conversation.Conversation.bundle.getString(&quot;ABOUT_TEXT&quot;)" type="code"/>
         </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lbl2">
       <Properties>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="udpconversation.UDPConversation.bundle.getString(&quot;VERSION&quot;) + &quot;: &quot; + udpconversation.UDPConversation.getVersion()" type="code"/>
+          <Connection code="conversation.Conversation.bundle.getString(&quot;VERSION&quot;) + &quot;: &quot; + conversation.Conversation.getVersion()" type="code"/>
         </Property>
       </Properties>
     </Component>

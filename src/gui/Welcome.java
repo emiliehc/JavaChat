@@ -33,7 +33,7 @@ public class Welcome extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         setResizable(false);
 
-        lblWelcome.setText(udpconversation.UDPConversation.bundle.getString("WELCOME_MESSAGE"));
+        lblWelcome.setText(conversation.Conversation.bundle.getString("WELCOME_MESSAGE"));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

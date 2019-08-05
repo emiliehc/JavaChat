@@ -46,7 +46,7 @@
     <Component class="javax.swing.JLabel" name="lblWelcome">
       <Properties>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="udpconversation.UDPConversation.bundle.getString(&quot;WELCOME_MESSAGE&quot;)" type="code"/>
+          <Connection code="conversation.Conversation.bundle.getString(&quot;WELCOME_MESSAGE&quot;)" type="code"/>
         </Property>
       </Properties>
     </Component>

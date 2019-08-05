@@ -1,4 +1,4 @@
-package udpconversation;
+package conversation;
 
 import gui.ChatDialog;
 import gui.Welcome;
@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
-public class UDPConversation {
+public class Conversation {
 
     // Preferences
     public static boolean filterUnintelligible = true;
@@ -120,6 +120,6 @@ public class UDPConversation {
     }
     
     public static String getVersion() {
-        return "2.0.3";
+        return "2.1.0";
     }
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package udpconversation;
+package conversation;
 
 import java.net.*;
 
@@ -26,18 +26,18 @@ public class MessageReceiver implements Runnable {
                 String received = new String(packet.getData(), 0, packet.getLength());
                 if (received.startsWith("WHOSONLINE")) {
                     //System.out.println(received);
-                    UDPConversation.cd.receive(received.substring(10, received.length()));
+                    Conversation.cd.receive(received.substring(10, received.length()));
                 } else if (received.equals("RECEIVED")) {
-                    UDPConversation.time = java.lang.System.currentTimeMillis();
-                    UDPConversation.connected = true;
-                    UDPConversation.cd.lblStatus.setText(UDPConversation.bundle.getString("CONNECTED"));
+                    Conversation.time = java.lang.System.currentTimeMillis();
+                    Conversation.connected = true;
+                    Conversation.cd.lblStatus.setText(Conversation.bundle.getString("CONNECTED"));
                 } else {
                     //receivedMsg += received + "\n";
                     String[] separated = received.split(" : ");
-                    received = separated[0] + " : " + Encryption.decrypt(separated[1], UDPConversation.key);
+                    received = separated[0] + " : " + Encryption.decrypt(separated[1], Conversation.key);
 
                     boolean unintelligible = false;
-                    if (UDPConversation.filterUnintelligible) {
+                    if (Conversation.filterUnintelligible) {
                         // test if the message is on the same channel
                         char[] receivedChar = received.toCharArray();
                         for (char c : receivedChar) {
@@ -48,7 +48,7 @@ public class MessageReceiver implements Runnable {
                     }
 
                     if (!unintelligible) {
-                        UDPConversation.cd.receive(received);
+                        Conversation.cd.receive(received);
                     }
                 }
             } catch (Exception e) {
