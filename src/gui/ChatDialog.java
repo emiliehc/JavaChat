@@ -5,8 +5,8 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import udpconversation.Encryption;
-import udpconversation.UDPConversation;
+import conversation.Encryption;
+import conversation.Conversation;
 import javax.swing.text.DefaultCaret;
 
 /**
@@ -57,7 +57,7 @@ public class ChatDialog extends javax.swing.JFrame {
         btnChinese = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle(UDPConversation.bundle.getString("JAVA_CHAT"));
+        setTitle(Conversation.bundle.getString("JAVA_CHAT"));
         setMinimumSize(new java.awt.Dimension(400, 300));
         setName("main"); // NOI18N
 
@@ -76,20 +76,20 @@ public class ChatDialog extends javax.swing.JFrame {
             }
         });
 
-        btnSend.setText(UDPConversation.bundle.getString("SEND"));
+        btnSend.setText(Conversation.bundle.getString("SEND"));
         btnSend.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSendActionPerformed(evt);
             }
         });
 
-        lblRecipient.setText(UDPConversation.bundle.getString("RECIPIENT"));
+        lblRecipient.setText(Conversation.bundle.getString("RECIPIENT"));
 
-        lblReceiver1.setText(UDPConversation.bundle.getString("TEXT"));
+        lblReceiver1.setText(Conversation.bundle.getString("TEXT"));
 
         pnlStatusBar.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
-        lblStatus.setText(UDPConversation.bundle.getString("CONNECTING"));
+        lblStatus.setText(Conversation.bundle.getString("CONNECTING"));
 
         javax.swing.GroupLayout pnlStatusBarLayout = new javax.swing.GroupLayout(pnlStatusBar);
         pnlStatusBar.setLayout(pnlStatusBarLayout);
@@ -105,9 +105,9 @@ public class ChatDialog extends javax.swing.JFrame {
             .addComponent(lblStatus, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
         );
 
-        menuFile.setText(UDPConversation.bundle.getString("PROGRAM"));
+        menuFile.setText(Conversation.bundle.getString("PROGRAM"));
 
-        menuWhosOnline.setText(UDPConversation.bundle.getString("SHOW_WHOS_ONLINE"));
+        menuWhosOnline.setText(Conversation.bundle.getString("SHOW_WHOS_ONLINE"));
         menuWhosOnline.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnWhosOnlineActionPerformed(evt);
@@ -115,7 +115,7 @@ public class ChatDialog extends javax.swing.JFrame {
         });
         menuFile.add(menuWhosOnline);
 
-        menuFileExit.setText(UDPConversation.bundle.getString("EXIT"));
+        menuFileExit.setText(Conversation.bundle.getString("EXIT"));
         menuFileExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuFileExitActionPerformed(evt);
@@ -125,9 +125,9 @@ public class ChatDialog extends javax.swing.JFrame {
 
         menuBar.add(menuFile);
 
-        menuOptions.setText(UDPConversation.bundle.getString("OPTIONS"));
+        menuOptions.setText(Conversation.bundle.getString("OPTIONS"));
 
-        btnAboutt.setText(UDPConversation.bundle.getString("ABOUT"));
+        btnAboutt.setText(Conversation.bundle.getString("ABOUT"));
         btnAboutt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAbouttActionPerformed(evt);
@@ -136,7 +136,7 @@ public class ChatDialog extends javax.swing.JFrame {
         menuOptions.add(btnAboutt);
 
         menuFilter.setSelected(true);
-        menuFilter.setText(UDPConversation.bundle.getString("TEXT_FILTER"));
+        menuFilter.setText(Conversation.bundle.getString("TEXT_FILTER"));
         menuFilter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuFilterActionPerformed(evt);
@@ -144,7 +144,7 @@ public class ChatDialog extends javax.swing.JFrame {
         });
         menuOptions.add(menuFilter);
 
-        menuLegacyEncryption.setText(UDPConversation.bundle.getString("LEGACY_ENCRYPTION"));
+        menuLegacyEncryption.setText(Conversation.bundle.getString("LEGACY_ENCRYPTION"));
         menuLegacyEncryption.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuLegacyEncryptionActionPerformed(evt);
@@ -152,7 +152,7 @@ public class ChatDialog extends javax.swing.JFrame {
         });
         menuOptions.add(menuLegacyEncryption);
 
-        menuLanguages.setText(UDPConversation.bundle.getString("LANGUAGES"));
+        menuLanguages.setText(Conversation.bundle.getString("LANGUAGES"));
 
         btnEnglish.setText("English");
         btnEnglish.addActionListener(new java.awt.event.ActionListener() {
@@ -240,14 +240,14 @@ public class ChatDialog extends javax.swing.JFrame {
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
         // TODO add your handling code here:
-        bufferedOut = Encryption.encrypt(txtSend.getText(), UDPConversation.key);
+        bufferedOut = Encryption.encrypt(txtSend.getText(), Conversation.key);
         txtSend.setText("");
     }//GEN-LAST:event_btnSendActionPerformed
 
     private void btnWhosOnlineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWhosOnlineActionPerformed
         try {
             // TODO add your handling code here:
-            UDPConversation.sender.sendMessage("WHOSONLINE");
+            Conversation.sender.sendMessage("WHOSONLINE");
         } catch (Exception ex) {
             System.err.println(ex);
         }
@@ -260,12 +260,12 @@ public class ChatDialog extends javax.swing.JFrame {
 
     private void menuFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFilterActionPerformed
         // TODO add your handling code here:
-        UDPConversation.filterUnintelligible = !UDPConversation.filterUnintelligible;
+        Conversation.filterUnintelligible = !Conversation.filterUnintelligible;
     }//GEN-LAST:event_menuFilterActionPerformed
 
     private void menuLegacyEncryptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLegacyEncryptionActionPerformed
         // TODO add your handling code here:
-        UDPConversation.legacyEncryption = !UDPConversation.legacyEncryption;
+        Conversation.legacyEncryption = !Conversation.legacyEncryption;
     }//GEN-LAST:event_menuLegacyEncryptionActionPerformed
 
     private void txtSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSendActionPerformed
@@ -279,7 +279,7 @@ public class ChatDialog extends javax.swing.JFrame {
         } catch (IOException e) {
             System.err.println(e);
         }
-        UDPConversation.Relaunch("en-US");
+        Conversation.Relaunch("en-US");
     }//GEN-LAST:event_btnEnglishActionPerformed
 
     private void btnChineseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChineseActionPerformed
@@ -289,7 +289,7 @@ public class ChatDialog extends javax.swing.JFrame {
         } catch (IOException e) {
             System.err.println(e);
         }
-        UDPConversation.Relaunch("zh-CN");
+        Conversation.Relaunch("zh-CN");
     }//GEN-LAST:event_btnChineseActionPerformed
 
     private void btnAbouttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbouttActionPerformed
@@ -306,7 +306,7 @@ public class ChatDialog extends javax.swing.JFrame {
         } catch (IOException e) {
             System.err.println(e);
         }
-        UDPConversation.Relaunch("zh-PY");
+        Conversation.Relaunch("zh-PY");
     }//GEN-LAST:event_btnChinesePinyinActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -316,7 +316,7 @@ public class ChatDialog extends javax.swing.JFrame {
         } catch (IOException e) {
             System.err.println(e);
         }
-        UDPConversation.Relaunch("de-DE");
+        Conversation.Relaunch("de-DE");
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void txtSendKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSendKeyPressed

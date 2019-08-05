@@ -1,4 +1,4 @@
-package udpconversation;
+package conversation;
 
 import java.util.Random;
 
@@ -7,7 +7,7 @@ public class Encryption {
     private static Random generator;
 
     public static String encrypt(String msg, String key) {
-        if (!UDPConversation.legacyEncryption) {
+        if (!Conversation.legacyEncryption) {
             // shift the key around
             long seed = 1;
             for (char c : key.toCharArray()) {
@@ -42,7 +42,7 @@ public class Encryption {
     }
 
     public static String decrypt(String msg, String key) {
-        if (!UDPConversation.legacyEncryption) {
+        if (!Conversation.legacyEncryption) {
             // shift the key around
             long seed = 1;
             for (char c : key.toCharArray()) {

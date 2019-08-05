@@ -1,4 +1,4 @@
-package udpconversation;
+package conversation;
 
 import java.io.*;
 import java.net.*;
@@ -36,7 +36,7 @@ public class MessageSender implements Runnable {
         //BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         while (true) {
             try {
-                sendMessage(UDPConversation.username + "XXXSEPARATORXXX" + UDPConversation.cd.getText() + "XXXSEPARATORXXX" + UDPConversation.cd.getRecipient());
+                sendMessage(Conversation.username + "XXXSEPARATORXXX" + Conversation.cd.getText() + "XXXSEPARATORXXX" + Conversation.cd.getRecipient());
             } catch (IOException e) {
                 //System.err.println(e);
             } catch (Exception e) {

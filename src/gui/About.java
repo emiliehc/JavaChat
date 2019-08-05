@@ -31,13 +31,13 @@ public class About extends javax.swing.JFrame {
         lbl2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle(udpconversation.UDPConversation.bundle.getString("ABOUT"));
+        setTitle(conversation.Conversation.bundle.getString("ABOUT"));
         setResizable(false);
         setType(java.awt.Window.Type.POPUP);
 
-        lbl1.setText(udpconversation.UDPConversation.bundle.getString("ABOUT_TEXT"));
+        lbl1.setText(conversation.Conversation.bundle.getString("ABOUT_TEXT"));
 
-        lbl2.setText(udpconversation.UDPConversation.bundle.getString("VERSION") + ": " + udpconversation.UDPConversation.getVersion());
+        lbl2.setText(conversation.Conversation.bundle.getString("VERSION") + ": " + conversation.Conversation.getVersion());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
