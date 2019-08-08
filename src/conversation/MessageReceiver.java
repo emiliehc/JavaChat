@@ -31,6 +31,8 @@ public class MessageReceiver implements Runnable {
                     Conversation.time = java.lang.System.currentTimeMillis();
                     Conversation.connected = true;
                     Conversation.cd.lblStatus.setText(Conversation.bundle.getString("CONNECTED"));
+                } else if (received.startsWith("ACK")) {
+                    Conversation.sender.acknowledged();
                 } else {
                     //receivedMsg += received + "\n";
                     String[] separated = received.split(" : ");

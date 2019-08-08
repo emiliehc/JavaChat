@@ -75,7 +75,7 @@ public class Conversation {
             System.err.println(ex);
         }
         
-        bundle = ResourceBundle.getBundle("Resources." + locale);
+        bundle = ResourceBundle.getBundle("resources." + locale);
         cd = new gui.ChatDialog();
         host = JOptionPane.showInputDialog(null, bundle.getString("ENTER_IP"), "108.61.182.134");
         username = JOptionPane.showInputDialog(bundle.getString("ENTER_NAME"));
