@@ -1,6 +1,5 @@
 package conversation;
 import java.net.*;
-import java.io.*;
 /**
  *
  * @author njche

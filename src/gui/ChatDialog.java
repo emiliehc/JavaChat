@@ -57,7 +57,7 @@ public class ChatDialog extends javax.swing.JFrame {
         btnChinese = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle(Conversation.bundle.getString("JAVA_CHAT"));
+        setTitle(conversation.Conversation.bundle.getString("JAVA_CHAT"));
         setMinimumSize(new java.awt.Dimension(400, 300));
         setName("main"); // NOI18N
 
@@ -76,20 +76,20 @@ public class ChatDialog extends javax.swing.JFrame {
             }
         });
 
-        btnSend.setText(Conversation.bundle.getString("SEND"));
+        btnSend.setText(conversation.Conversation.bundle.getString("SEND"));
         btnSend.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSendActionPerformed(evt);
             }
         });
 
-        lblRecipient.setText(Conversation.bundle.getString("RECIPIENT"));
+        lblRecipient.setText(conversation.Conversation.bundle.getString("RECIPIENT"));
 
-        lblReceiver1.setText(Conversation.bundle.getString("TEXT"));
+        lblReceiver1.setText(conversation.Conversation.bundle.getString("TEXT"));
 
         pnlStatusBar.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
-        lblStatus.setText(Conversation.bundle.getString("CONNECTING"));
+        lblStatus.setText(conversation.Conversation.bundle.getString("CONNECTING"));
 
         javax.swing.GroupLayout pnlStatusBarLayout = new javax.swing.GroupLayout(pnlStatusBar);
         pnlStatusBar.setLayout(pnlStatusBarLayout);
@@ -105,9 +105,9 @@ public class ChatDialog extends javax.swing.JFrame {
             .addComponent(lblStatus, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
         );
 
-        menuFile.setText(Conversation.bundle.getString("PROGRAM"));
+        menuFile.setText(conversation.Conversation.bundle.getString("PROGRAM"));
 
-        menuWhosOnline.setText(Conversation.bundle.getString("SHOW_WHOS_ONLINE"));
+        menuWhosOnline.setText(conversation.Conversation.bundle.getString("SHOW_WHOS_ONLINE"));
         menuWhosOnline.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnWhosOnlineActionPerformed(evt);
@@ -115,7 +115,7 @@ public class ChatDialog extends javax.swing.JFrame {
         });
         menuFile.add(menuWhosOnline);
 
-        menuFileExit.setText(Conversation.bundle.getString("EXIT"));
+        menuFileExit.setText(conversation.Conversation.bundle.getString("EXIT"));
         menuFileExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuFileExitActionPerformed(evt);
@@ -125,9 +125,9 @@ public class ChatDialog extends javax.swing.JFrame {
 
         menuBar.add(menuFile);
 
-        menuOptions.setText(Conversation.bundle.getString("OPTIONS"));
+        menuOptions.setText(conversation.Conversation.bundle.getString("OPTIONS"));
 
-        btnAboutt.setText(Conversation.bundle.getString("ABOUT"));
+        btnAboutt.setText(conversation.Conversation.bundle.getString("ABOUT"));
         btnAboutt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAbouttActionPerformed(evt);
@@ -136,7 +136,7 @@ public class ChatDialog extends javax.swing.JFrame {
         menuOptions.add(btnAboutt);
 
         menuFilter.setSelected(true);
-        menuFilter.setText(Conversation.bundle.getString("TEXT_FILTER"));
+        menuFilter.setText(conversation.Conversation.bundle.getString("TEXT_FILTER"));
         menuFilter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuFilterActionPerformed(evt);
@@ -144,7 +144,7 @@ public class ChatDialog extends javax.swing.JFrame {
         });
         menuOptions.add(menuFilter);
 
-        menuLegacyEncryption.setText(Conversation.bundle.getString("LEGACY_ENCRYPTION"));
+        menuLegacyEncryption.setText(conversation.Conversation.bundle.getString("LEGACY_ENCRYPTION"));
         menuLegacyEncryption.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuLegacyEncryptionActionPerformed(evt);
@@ -152,7 +152,7 @@ public class ChatDialog extends javax.swing.JFrame {
         });
         menuOptions.add(menuLegacyEncryption);
 
-        menuLanguages.setText(Conversation.bundle.getString("LANGUAGES"));
+        menuLanguages.setText(conversation.Conversation.bundle.getString("LANGUAGES"));
 
         btnEnglish.setText("English");
         btnEnglish.addActionListener(new java.awt.event.ActionListener() {
@@ -213,7 +213,7 @@ public class ChatDialog extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblRecipient)
-                .addGap(18, 18, 18)
+                .addGap(38, 38, 38)
                 .addComponent(lblReceiver1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );

@@ -23,8 +23,6 @@
  */
 package conversation;
 
-import java.io.IOException;
-import java.util.Arrays;
 
 /**
  *
@@ -39,7 +37,7 @@ public class MessageSendingService implements Runnable {
             } catch (InterruptedException ex) {
             }
             try {
-                System.out.println(Conversation.sender.queue.size());
+                //System.out.println(Conversation.sender.queue.size());
                 Conversation.sender.sock.send(Conversation.sender.queue.get(0));
             } catch (Exception e) {
                 //System.out.println(e);

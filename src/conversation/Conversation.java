@@ -29,6 +29,8 @@ public class Conversation {
     public static boolean connected = false;
 
     public static void main(String args[]) {
+        // use the top menu bar on mac os devices
+        System.setProperty("apple.laf.useScreenMenuBar", "true");
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -77,7 +79,7 @@ public class Conversation {
         
         bundle = ResourceBundle.getBundle("resources." + locale);
         cd = new gui.ChatDialog();
-        host = JOptionPane.showInputDialog(null, bundle.getString("ENTER_IP"), "108.61.182.134");
+        host = JOptionPane.showInputDialog(null, bundle.getString("ENTER_IP"), "chat.nanjingchj.me");
         username = JOptionPane.showInputDialog(bundle.getString("ENTER_NAME"));
         key = JOptionPane.showInputDialog(bundle.getString("ENTER_CODE"));
         Welcome w = new Welcome();
