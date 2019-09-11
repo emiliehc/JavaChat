@@ -8,7 +8,7 @@ import java.util.List;
 
 public class MessageSender implements Runnable {
 
-    public final static int PORT = 7331;
+    public final static int PORT = 8080;
     public DatagramSocket sock;
     public String hostname;
     public List<DatagramPacket> queue = new ArrayList<>();
