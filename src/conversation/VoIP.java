@@ -24,36 +24,41 @@
 package conversation;
 
 import java.net.*;
+import javax.sound.sampled.*;
 
 /**
  *
  * @author njche
  */
-public class Connection implements Runnable {
+public class VoIP implements Runnable {
 
-    private byte[] data;
+    private byte[] buffer;
+    private int port;
+    private InetAddress address;
+    private TargetDataLine line;
+    private DatagramPacket packet;
+    private AudioFormat.Encoding encoding = AudioFormat.Encoding.PCM_SIGNED;
+    private float rate = 44100.0f;
+    private int channels = 2;
+    private int sampleSize = 16;
+    private boolean bigEndian = true;
+    private AudioFormat format = new AudioFormat(encoding, rate, sampleSize, channels, (sampleSize / 8) * channels, rate, bigEndian);
+    private DataLine.Info info = new DataLine.Info(TargetDataLine.class, format);
 
-    Connection() {
-        data = ("USERCONNECTION:" + Conversation.username).getBytes();
+    public VoIP(InetAddress ia, int _port) {
+        address = ia;
+        port = _port;
     }
 
     @Override
     public void run() {
-        while (true) {
-            try {
-                //Conversation.sender.sendMessage("USERCONNECTION:" + Conversation.username);
-
-                Conversation.sender.sock.send(new DatagramPacket(data, data.length, InetAddress.getByName(Conversation.sender.hostname), Conversation.sender.PORT));
-                //System.out.println((java.lang.System.currentTimeMillis() - Conversation.time) / 1000.0);
-                if (java.lang.System.currentTimeMillis() - Conversation.time > 3000) {
-                    Conversation.connected = false;
-                    Conversation.cd.lblStatus.setText(Conversation.bundle.getString("CONNECTING"));
-                }
-                Thread.sleep(1000);
-            } catch (Exception ex) {
-
-            }
-        }
+        
+    }
+    
+    public static void start(InetAddress ia, int port) {
+        VoIP voip = new VoIP(ia, port);
+        Thread t = new Thread(voip);
+        t.start();
     }
 
 }

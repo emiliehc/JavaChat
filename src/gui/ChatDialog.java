@@ -1,3 +1,26 @@
+/*
+ * The MIT License
+ *
+ * Copyright 2019 njche.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
 package gui;
 
 import java.awt.event.ActionEvent;
@@ -42,6 +65,7 @@ public class ChatDialog extends javax.swing.JFrame {
         lblReceiver1 = new javax.swing.JLabel();
         pnlStatusBar = new javax.swing.JPanel();
         lblStatus = new javax.swing.JLabel();
+        btnVoiceChat = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
         menuWhosOnline = new javax.swing.JMenuItem();
@@ -53,7 +77,6 @@ public class ChatDialog extends javax.swing.JFrame {
         menuLanguages = new javax.swing.JMenu();
         btnEnglish = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
-        btnChinesePinyin = new javax.swing.JMenuItem();
         btnChinese = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -104,6 +127,14 @@ public class ChatDialog extends javax.swing.JFrame {
             pnlStatusBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblStatus, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
         );
+
+        btnVoiceChat.setText(conversation.Conversation.bundle.getString("VOICE"));
+        btnVoiceChat.setActionCommand("btnVoiceChat");
+        btnVoiceChat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoiceChatActionPerformed(evt);
+            }
+        });
 
         menuFile.setText(conversation.Conversation.bundle.getString("PROGRAM"));
 
@@ -170,14 +201,6 @@ public class ChatDialog extends javax.swing.JFrame {
         });
         menuLanguages.add(jMenuItem1);
 
-        btnChinesePinyin.setText("Hànyǔ Pīnyīn");
-        btnChinesePinyin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnChinesePinyinActionPerformed(evt);
-            }
-        });
-        menuLanguages.add(btnChinesePinyin);
-
         btnChinese.setText("中文 (简体)");
         btnChinese.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -206,9 +229,11 @@ public class ChatDialog extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(txtRecipient, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtSend, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
+                        .addComponent(txtSend, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSend)))
+                        .addComponent(btnSend)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnVoiceChat)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -229,8 +254,9 @@ public class ChatDialog extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSend, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSend, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtRecipient, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtRecipient, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVoiceChat, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSend, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlStatusBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -299,16 +325,6 @@ public class ChatDialog extends javax.swing.JFrame {
         about.setVisible(true);
     }//GEN-LAST:event_btnAbouttActionPerformed
 
-    private void btnChinesePinyinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChinesePinyinActionPerformed
-        // TODO add your handling code here:
-        try (FileWriter fw = new FileWriter(new File("preferences.pref"))) {
-            fw.write("zh-PY");
-        } catch (IOException e) {
-            System.err.println(e);
-        }
-        Conversation.Relaunch("zh-PY");
-    }//GEN-LAST:event_btnChinesePinyinActionPerformed
-
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
         try (FileWriter fw = new FileWriter(new File("preferences.pref"))) {
@@ -325,6 +341,13 @@ public class ChatDialog extends javax.swing.JFrame {
             btnSendActionPerformed(new ActionEvent(new Object(), 0, new String()));
         }
     }//GEN-LAST:event_txtSendKeyPressed
+
+    private void btnVoiceChatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoiceChatActionPerformed
+        // TODO add your handling code here:
+        gui.VoiceChat vc = new gui.VoiceChat();
+        vc.pack();
+        vc.setVisible(true);
+    }//GEN-LAST:event_btnVoiceChatActionPerformed
 
     public String getText() throws IOException {
         if (bufferedOut.equals("")) {
@@ -349,9 +372,9 @@ public class ChatDialog extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem btnAboutt;
     private javax.swing.JMenuItem btnChinese;
-    private javax.swing.JMenuItem btnChinesePinyin;
     private javax.swing.JMenuItem btnEnglish;
     private javax.swing.JButton btnSend;
+    private javax.swing.JButton btnVoiceChat;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblReceiver1;

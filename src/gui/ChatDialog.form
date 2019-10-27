@@ -94,14 +94,6 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
                   </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="btnChinesePinyin">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="H&#xe0;ny&#x1d4; P&#x12b;ny&#x12b;n"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnChinesePinyinActionPerformed"/>
-                  </Events>
-                </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="btnChinese">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x4e2d;&#x6587; (&#x7b80;&#x4f53;)"/>
@@ -158,9 +150,11 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txtRecipient" min="-2" pref="78" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtSend" pref="519" max="32767" attributes="0"/>
+                      <Component id="txtSend" pref="422" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnSend" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnVoiceChat" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -187,8 +181,9 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="txtSend" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                  <Component id="btnSend" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="txtRecipient" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="btnVoiceChat" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="btnSend" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="pnlStatusBar" min="-2" max="-2" attributes="0"/>
@@ -285,5 +280,16 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="btnVoiceChat">
+      <Properties>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="conversation.Conversation.bundle.getString(&quot;VOICE&quot;)" type="code"/>
+        </Property>
+        <Property name="actionCommand" type="java.lang.String" value="btnVoiceChat"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVoiceChatActionPerformed"/>
+      </Events>
+    </Component>
   </SubComponents>
 </Form>
